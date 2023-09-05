@@ -1,24 +1,19 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import CardContainer from './CardContainer';
+import Header from './Header';
 
 function App() {
+  const [searchInput, setSearchInput] = useState("");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="vh-100 gradient-custom">
+      <div className='container-fluid p-0'>
+        <header>
+          <Header searchInput={searchInput} onChangeSearch={setSearchInput} />
+        </header>
+        <CardContainer searchInput={searchInput || localStorage.getItem("searchInput")} />
+      </div>
+    </section>
   );
 }
 
